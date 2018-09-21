@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vuikit/icons": "^0.8.1",
+    "@vuikit/theme": "^0.8.1",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuikit": "^0.8.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
