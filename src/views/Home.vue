@@ -1,22 +1,24 @@
 <template>
 <div class="uk-container uk-container-small">
+  <PersonalInfo v-bind:personalInfo="personal"/>
 
-  <vk-grid class="uk-child-width-1-2@s uk-child-width-1-2@m ">
-      <vk-card>
-        <ul>
-          <li>noudadrichem</li>
-          <li>Coryluslaan 18 1702VN Heerhugowaard</li>
-          <li>kvk: 6898 2624</li>
-          <li>btw: NL249711382B01</li>
-          <li>bank: NL26 ABNA 0247 9036 71</li>
-        </ul>
-      </vk-card>
-  </vk-grid>
+  <Rows v-bind:billableTasks="billableTasks"/>
+
+  <hr/>
+
+ <pre> {{ $data }}</pre>
 </div>
 </template>
 
 <script>
+import Rows from '../components/rows'
+import PersonalInfo from '../components/PersonalInfo'
+
 export default {
+  components: {
+    Rows,
+    PersonalInfo
+  },
   data: () => ({
     companyName: 'noudadrichem',
     personal: {
