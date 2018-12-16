@@ -10,10 +10,7 @@
 
 <script>
 export default {
-  props: ['personalInfo', 'printHello'],
-  mounted() {
-    console.log(this.printHello())
-  }
+  props: ['personalInfo'],
 }
 </script>
 

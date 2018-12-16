@@ -4,9 +4,6 @@
 
   <Rows v-bind:billableTasks="billableTasks"/>
 
-  <hr/>
-
- <pre> {{ $data }}</pre>
 </div>
 </template>
 
@@ -48,6 +45,22 @@ export default {
     currentDate: new Date(),
     expireDate: new Date(Date.now() + 12096e5),
     billableTasks: [{
+      item: 'service',
+      description: '',
+      units: 2,
+      costPerUnit: 35,
+    }, {
+      item: 'service',
+      description: '',
+      units: 2,
+      costPerUnit: 35,
+    }, {
+      item: 'service',
+      description: '',
+      units: 2,
+      costPerUnit: 35,
+    }, {
+      item: 'service',
       description: '',
       units: 2,
       costPerUnit: 35,
