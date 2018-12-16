@@ -1,22 +1,21 @@
 <template>
 <div class="uk-container uk-container-small">
-  <PersonalInfo v-bind:personalInfo="personal"/>
+  <div class="uk-grid">
+    <div class="uk-width-1-1 uk-width-3-5@m">
 
-  <Rows v-bind:billableTasks="billableTasks"/>
-
-  <hr/>
-
- <pre> {{ $data }}</pre>
+    </div>
+    <div class="uk-width-1-1 uk-width-2-5@m">
+      <PersonalInfo v-bind:personalInfo="personal"/>
+    </div>
+  </div>
 </div>
 </template>
 
 <script>
-import Rows from '../components/rows'
 import PersonalInfo from '../components/PersonalInfo'
 
 export default {
   components: {
-    Rows,
     PersonalInfo
   },
   data: () => ({
