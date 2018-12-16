@@ -1,9 +1,7 @@
 <template>
   <div>
 
-    <h1>Personal Info</h1>
-
-    {{ $props }}
+    <pre><h1>{{ personalInfo.name }}</h1></pre>
 
   </div>
 </template>
@@ -14,5 +12,8 @@ export default {
 }
 </script>
 
-
-
+<style lang="scss">
+  h1 {
+    font-size: 8rem;
+  }
+</style>
