@@ -26,14 +26,16 @@ export default {
 
     span {
       display: flex;
+      flex: 1;
+      padding: 8px;
     }
 
     span:first-child {
       flex: 0;
     }
 
-    span:nth-child(2) {
-      flex: 1;
+    span:nth-child(3) {
+      flex: 3;
     }
   }
 </style>

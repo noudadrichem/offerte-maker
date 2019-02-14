@@ -6,10 +6,11 @@
   
   <div>
 
-    <input type="text" v-model="item">
-    <input type="text" v-model="description">
-    <input type="number" v-model="units">
-    <input type="text" v-model="costPerUnit">
+    <input type="text" v-model="newRow.item">
+    <input type="text" v-model="newRow.description">
+    <input type="number" v-model="newRow.units">
+    <input type="text" v-model="newRow.costPerUnit">
+    <button @click="addRow(newRow)">ADD</button>
 
   </div>
 </div>
@@ -19,13 +20,15 @@
 import Row from './row'
 
 export default {
-  props: ['billableTasks'],
+  props: ['billableTasks', 'addRow'],
   components: { Row },
   data: () => ({
-    item: 'service',
-    description: 'Mauris sed sem et orci fermentum sollicitudin. Quisque sit amet enim odio.',
-    units: 2,
-    costPerUnit: 35,
+    newRow: {
+      item: 'service',
+      description: 'Mauris sed sem et orci.',
+      units: 2,
+      costPerUnit: 35,
+    }
   })
 }
 </script>

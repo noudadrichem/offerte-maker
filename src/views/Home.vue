@@ -1,13 +1,14 @@
 <template>
 <div class="uk-container uk-container-small">
   <div class="uk-grid">
-    <div class="uk-width-1-1 uk-width-3-5@m">
-
-  <Rows v-bind:billableTasks="billableTasks"/>
-
-    </div>
     <div class="uk-width-1-1 uk-width-2-5@m">
       <PersonalInfo v-bind:personalInfo="personal"/>
+    </div>
+
+    <br/>
+
+    <div class="uk-width-1-1 uk-width-5@m">
+      <Rows v-bind:billableTasks="billableTasks" :addRow="addRow"/>
     </div>
   </div>
 </div>
@@ -15,10 +16,17 @@
 
 <script>
 import PersonalInfo from '../components/PersonalInfo'
+import Rows from '../components/rows'
 
 export default {
   components: {
-    PersonalInfo
+    PersonalInfo,
+    Rows
+  },
+  methods: {
+    addRow(newRow) {
+      this.$set(this, 'billableTasks', [...this.billableTasks, newRow])
+    }
   },
   data: () => ({
     companyName: 'noudadrichem',
@@ -48,27 +56,7 @@ export default {
     relationNumber: 18001,
     currentDate: new Date(),
     expireDate: new Date(Date.now() + 12096e5),
-    billableTasks: [{
-      item: 'service',
-      description: '',
-      units: 2,
-      costPerUnit: 35,
-    }, {
-      item: 'service',
-      description: '',
-      units: 2,
-      costPerUnit: 35,
-    }, {
-      item: 'service',
-      description: '',
-      units: 2,
-      costPerUnit: 35,
-    }, {
-      item: 'service',
-      description: '',
-      units: 2,
-      costPerUnit: 35,
-    }]
+    billableTasks: []
   })
 }
 </script>
