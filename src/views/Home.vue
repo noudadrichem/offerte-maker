@@ -8,6 +8,7 @@
     <br/>
 
     <div class="uk-width-1-1 uk-width-5@m">
+      <input class="offerte-heading" type="text" v-model="offerteTitle">
       <Rows v-bind:billableTasks="billableTasks" :addRow="addRow"/>
     </div>
   </div>
@@ -29,6 +30,7 @@ export default {
     }
   },
   data: () => ({
+    offerteTitle: 'Enter your title',
     companyName: 'noudadrichem',
     personal: {
       name: 'Noud Adrichem',

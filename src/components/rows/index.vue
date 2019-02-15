@@ -1,27 +1,33 @@
 <template>
 <div>
-  <h1>Rowsss</h1>
+  <div class="row header">
+    <span v-for="(value, key, idx) in newRow" :key="idx">
+      {{ key }}
+    </span>
+  </div>
 
   <Row v-for="(task, idx) in billableTasks" :task="task" :idx="idx" :key="idx"/>
   
-  <div>
-
+  <div class="row">
     <input type="text" v-model="newRow.item">
     <input type="text" v-model="newRow.description">
     <input type="number" v-model="newRow.units">
-    <input type="text" v-model="newRow.costPerUnit">
-    <button @click="addRow(newRow)">ADD</button>
-
+    <input type="number" v-model="newRow.costPerUnit">
+    <Button @click.native="addRow({...newRow})">Add row</Button>
   </div>
 </div>
 </template>
 
 <script>
 import Row from './row'
+import Button from '../Button'
 
 export default {
   props: ['billableTasks', 'addRow'],
-  components: { Row },
+  components: { 
+    Row, 
+    Button 
+  },
   data: () => ({
     newRow: {
       item: 'service',
@@ -32,3 +38,7 @@ export default {
   })
 }
 </script>
+
+<style lang="scss">
+
+</style>
