@@ -1,15 +1,11 @@
 <template>
-<div class="uk-container uk-container-small">
-  <div class="uk-grid">
-    <div class="uk-width-1-1 uk-width-2-5@m">
-      <PersonalInfo v-bind:personalInfo="personal"/>
-    </div>
+<div class="home">
+  <div class="container">
+    <PersonalInfo v-bind:personalInfo="personal"/>
 
-    <br/>
-
-    <div class="uk-width-1-1 uk-width-5@m">
+    <div class="">
       <input class="offerte-heading" type="text" v-model="offerteTitle">
-      <Rows v-bind:billableTasks="billableTasks" :addRow="addRow"/>
+      <Rows v-bind:billableTasks="billableTasks" :addRow="addRow" :btwPercent="btwPercent"/>
     </div>
   </div>
 </div>
@@ -35,7 +31,7 @@ export default {
     personal: {
       name: 'Noud Adrichem',
       kvk: '6898 2624',
-      btw: 'NL249711382B01',
+      btwNumber: 'NL249711382B01',
       bank: 'NL26 ABNA 0247 9036 71',
       tnv: 'N. Adrichem',
       cellphone: '+31 627 490 197',
@@ -58,7 +54,17 @@ export default {
     relationNumber: 18001,
     currentDate: new Date(),
     expireDate: new Date(Date.now() + 12096e5),
-    billableTasks: []
+    billableTasks: [],
+    btwPercent: 21,
   })
 }
 </script>
+
+<style lang="scss" scoped>
+  .container {
+    max-width: 1184px;
+    padding: 0 24px;
+    margin: 0 auto;
+  }
+</style>
+
