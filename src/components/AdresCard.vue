@@ -1,7 +1,5 @@
 <template>
-  <vk-card class="uk-width-1-2@m">
-    <vk-card-title>noudadrichem</vk-card-title>
-  </vk-card>
+
 </template>
 
 <script>

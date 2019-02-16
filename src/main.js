@@ -1,17 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
-
-import Vuikit from 'vuikit'
-import '@vuikit/theme'
-
-Vue.use(Vuikit)
+import './scss/master.scss'
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
-  store,
   render: h => h(App)
 }).$mount('#app')
