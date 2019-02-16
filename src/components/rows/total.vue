@@ -1,10 +1,10 @@
 <template>
-<div>
-  <div class="label-total">Subotaal ex BTW: <span>{{ totalPriceEX }}</span></div>
-  <div class="label-total">BTW tarief: <span>{{ btwPercent }}</span></div>
-  <div class="label-total">BTW bedrag: <span>{{ btwPrice }}</span></div>
-
-  <div class="label-total">SubTotaaTotaal: <span>{{ totalPriceINC }}</span></div>
+<div class="total-container">
+  <div class="label-total">Subotaal excl. btw: <span class="num">&euro;{{ totalPriceEX }}</span></div>
+  <div class="label-total">Btw tarief: <span class="num">{{ btwPercent }}%</span></div>
+  <div class="label-total">Btw bedrag: <span class="num">&euro;{{ btwPrice }}</span></div>
+  <hr/>
+  <div class="label-total">SubTotaaTotaal: <span class="num">&euro;{{ totalPriceINC }}</span></div>
 </div>
 </template>
 
@@ -14,17 +14,45 @@ export default {
   props: ['rows', 'btwPercent'],
   computed: {
     totalPriceEX() {
-      return this.rows.reduce((acc, { costPerUnit, units}) =>
+      const totalPriceEx = this.rows.reduce((acc, { costPerUnit, units}) =>
         acc += (costPerUnit * units)
       , 0)
+
+      return this.valueToCurrency(totalPriceEx)
     },
     btwPrice() {
-      return this.totalPriceEX * (this.btwPercent / 100)
+      return this.valueToCurrency(this.totalPriceEX * (this.btwPercent / 100))
     },
     totalPriceINC() {
-      return this.totalPriceEX + this.btwPrice
+      return this.valueToCurrency(this.totalPriceEX + this.btwPrice)
+    }
+  },
+  methods: {
+    valueToCurrency(val) {
+      return parseFloat(val).toFixed(2)
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .total-container {
+    margin-top: 32px;
+    display: flex;
+    min-width: 200px;
+    max-width: 30%;
+    flex-direction: column;
+    margin-left: auto;
+
+    .label-total {
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      span.num {
+        font-weight: 700;
+      }
+    }
+  }
+</style>
+
 

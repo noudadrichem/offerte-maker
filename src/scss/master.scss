@@ -1,3 +1,16 @@
+:root {
+  --text-color-primary: #9b9b9b;
+  --text-color-secondary: #7a848f;
+  --text-color-tertiary: #7d7d7d;
+  --text-color-quaternary: #ced2d6;
+  --white: #fbfbfd;
+  --white-second: #f3f3f3;
+  --blanko-blue: #007aff;
+  --blanko-blue-light: #6eb3ff;
+  --red-danger: #c23636;
+  --box-shadow: 0 5px 10px 0 #eeeef3;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,10 +18,24 @@
 }
 
 body {
-  // font-family: 'Roboto', sans-serif;
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .num {
   font-family: 'IBM Plex Mono', monospace;
+}
+
+input,
+textarea {
+  background: inherit;
+  padding: 8px 0;
+  border: none;
+  border-radius: 4px;
+  margin: 4px;
+  font-size: 12px;
+  flex: 1;
+
+  &.page-heading {
+    font-size: 24px;
+  }
 }

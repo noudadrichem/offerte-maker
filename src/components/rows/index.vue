@@ -9,12 +9,12 @@
   <Row v-for="(task, idx) in billableTasks" :task="task" :idx="idx" :key="idx"/>
 
   <div class="row add">
-    <input type="text" v-model="newRow.item">
-    <input type="text" v-model="newRow.description">
+    <input type="text" v-model="newRow.item" placeholder="Item">
+    <input type="text" class="omschrijving" v-model="newRow.description" placeholder="Omschrijving">
     <input type="number" v-model="newRow.units">
     <input type="number" v-model="newRow.costPerUnit">
-    <Button @click.native="addRow({...newRow})">Add row</Button>
   </div>
+  <Button @click.native="addRow({...newRow})" className="">Add row</Button>
 
   <Total :rows="billableTasks" :btwPercent="btwPercent"/>
 </div>
@@ -34,12 +34,13 @@ export default {
   },
   data: () => ({
     newRow: {
-      item: 'service',
-      description: 'Mauris sed sem et orci.',
-      units: 2,
+      item: 'asdf',
+      description: 'adsf',
+      units: 1,
       costPerUnit: 35,
     },
     headings: {
+      index: 'Number',
       itemType: 'Item',
       description: 'Omschrijving',
       units: 'Uur',
@@ -50,6 +51,14 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  input {
+    &.omschrijving {
+      flex: 2;
+    }
 
+    &[type="number"] {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+  }
 </style>

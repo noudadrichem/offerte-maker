@@ -1,7 +1,6 @@
 <template>
   <div>
-
-    <pre><h1>{{ personalInfo.name }}</h1></pre>
+    <h3>{{ personalInfo.name }}</h3>
 
   </div>
 </template>

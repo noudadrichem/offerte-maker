@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <!-- <span>{{ idx + 1}}</span> -->
+    <span>{{ idx + 1}}</span>
     <span>{{ task.item }}</span>
     <span>{{ task.description }}</span>
     <span>{{ task.units }}</span>
@@ -18,11 +18,14 @@ export default {
 <style lang="scss">
   .row {
     width: 100%;
-    background: #f2f2f2;
-    margin: 4px 0;
     display: flex;
     align-items: flex;
     justify-content: space-between;
+
+    &:nth-child(even) {
+      box-shadow: var(--box-shadow);
+      background: var(--white);
+    }
 
 
     span {
@@ -32,7 +35,7 @@ export default {
     }
 
     &.header span {
-      font-family: 800;
+      font-weight: 800;
     }
     /* span:first-child {
       flex: 0;

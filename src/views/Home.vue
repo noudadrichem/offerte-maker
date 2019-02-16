@@ -1,10 +1,12 @@
 <template>
 <div class="home">
   <div class="container">
-    <PersonalInfo v-bind:personalInfo="personal"/>
+    <!-- <PersonalInfo v-bind:personalInfo="personal"/> -->
 
+    <GeneralInfo :generalInfo="generalInfo"/>
+
+    <input class="page-heading" type="text" v-model="offerteTitle" placeholder="Factuur titel">
     <div class="">
-      <input class="offerte-heading" type="text" v-model="offerteTitle">
       <Rows v-bind:billableTasks="billableTasks" :addRow="addRow" :btwPercent="btwPercent"/>
     </div>
   </div>
@@ -14,24 +16,27 @@
 <script>
 import PersonalInfo from '../components/PersonalInfo'
 import Rows from '../components/rows'
+import GeneralInfo from '../components/GeneralInfo'
 
 export default {
   components: {
     PersonalInfo,
-    Rows
+    Rows,
+    GeneralInfo
   },
   methods: {
     addRow(newRow) {
-      this.$set(this, 'billableTasks', [...this.billableTasks, newRow])
+      if(newRow.description !== '' && newRow.item !== '') {
+        this.$set(this, 'billableTasks', [...this.billableTasks, newRow])
+      }
     }
   },
   data: () => ({
-    offerteTitle: 'Enter your title',
+    offerteTitle: '',
     companyName: 'noudadrichem',
     personal: {
       name: 'Noud Adrichem',
       kvk: '6898 2624',
-      btwNumber: 'NL249711382B01',
       bank: 'NL26 ABNA 0247 9036 71',
       tnv: 'N. Adrichem',
       cellphone: '+31 627 490 197',
@@ -48,12 +53,15 @@ export default {
       city: 'Woensdrecht',
       country: 'NETHERLANDS',
     },
-    offerteNumber: 0,
-    offerteTo: 'Juliet Manrho',
+    generalInfo: {
+      offerteNumber: 0,
+      currentDate: new Date().toDateString(),
+      expireDate: new Date(Date.now() + 12096e5).toDateString(),
+      btwNumber: 'NL249711382B01',
+      relationNumber: 18001,
+    },
     client: 'BWI Woensdrecht',
-    relationNumber: 18001,
-    currentDate: new Date(),
-    expireDate: new Date(Date.now() + 12096e5),
+    offerteTo: 'Juliet Manrho',
     billableTasks: [],
     btwPercent: 21,
   })
@@ -65,6 +73,8 @@ export default {
     max-width: 1184px;
     padding: 0 24px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
   }
 </style>
 
