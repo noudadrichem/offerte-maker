@@ -8,7 +8,7 @@
 
     <div class="headings values">
       <span v-for="(value, key) in generalInfo" :key="key">
-        {{ value }}
+        <input type="text" v-model="generalInfo[key]"/>
       </span>
     </div>
   </div>
@@ -25,8 +25,8 @@ export default {
       'Vervaldatum',
       'Btw nummer',
       'Relatienummer'
-     ]
-  }),
+     ],
+  })
 }
 </script>
 

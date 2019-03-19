@@ -24,7 +24,9 @@ export default {
       return this.valueToCurrency(this.totalPriceEX * (this.btwPercent / 100))
     },
     totalPriceINC() {
-      return this.valueToCurrency(this.totalPriceEX + this.btwPrice)
+      return this.valueToCurrency(
+        parseFloat(this.totalPriceEX) + parseFloat(this.btwPrice)
+      )
     }
   },
   methods: {

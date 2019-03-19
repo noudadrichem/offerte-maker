@@ -1,11 +1,11 @@
 <template>
   <div class="row">
-    <span>{{ idx + 1}}</span>
+    <span class="num">{{ idx + 1}}</span>
     <span>{{ task.item }}</span>
     <span>{{ task.description }}</span>
-    <span>{{ task.units }}</span>
-    <span>{{ task.costPerUnit }}</span>
-    <span>{{ task.units * task.costPerUnit }}</span>
+    <span class="num">{{ task.units }}</span>
+    <span class="num">{{ task.costPerUnit }}</span>
+    <span class="num">{{ task.units * task.costPerUnit }}</span>
   </div>
 </template>
 
@@ -23,8 +23,9 @@ export default {
     justify-content: space-between;
 
     &:nth-child(even) {
-      box-shadow: var(--box-shadow);
-      background: var(--white);
+      background-color: #f2f2f2;
+      /* box-shadow: var(--box-shadow); */
+      /* background-color: var(--white); */
     }
 
 
@@ -41,7 +42,7 @@ export default {
       flex: 0;
     } */
 
-    span:nth-child(2) {
+    span:nth-child(3) {
       flex: 3;
     }
   }

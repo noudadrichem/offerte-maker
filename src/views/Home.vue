@@ -1,11 +1,17 @@
 <template>
 <div class="home">
   <div class="container">
-    <!-- <PersonalInfo v-bind:personalInfo="personal"/> -->
 
-    <GeneralInfo :generalInfo="generalInfo"/>
+    <UploadLogo/>
 
     <input class="page-heading" type="text" v-model="offerteTitle" placeholder="Factuur titel">
+
+    <div class="adres-cards">
+      <AdresCard :adresData="companyTo"/>
+      <AdresCard :adresData="companyFrom"/>
+    </div>
+    <GeneralInfo :generalInfo="generalInfo"/>
+
     <div class="">
       <Rows v-bind:billableTasks="billableTasks" :addRow="addRow" :btwPercent="btwPercent"/>
     </div>
@@ -17,12 +23,16 @@
 import PersonalInfo from '../components/PersonalInfo'
 import Rows from '../components/rows'
 import GeneralInfo from '../components/GeneralInfo'
+import AdresCard from '../components/AdresCard'
+import UploadLogo from '../components/UploadLogo'
 
 export default {
   components: {
     PersonalInfo,
     Rows,
-    GeneralInfo
+    GeneralInfo,
+    AdresCard,
+    UploadLogo
   },
   methods: {
     addRow(newRow) {
@@ -33,37 +43,35 @@ export default {
   },
   data: () => ({
     offerteTitle: '',
-    companyName: 'noudadrichem',
-    personal: {
-      name: 'Noud Adrichem',
-      kvk: '6898 2624',
-      bank: 'NL26 ABNA 0247 9036 71',
-      tnv: 'N. Adrichem',
-      cellphone: '+31 627 490 197',
-      email: 'info@noudadrichem.com',
-      adres: {
-        code: '1702VN',
-        city: 'HEERHUGOWAARD',
-        stree: 'Coryluslaan 18'
-      }
+    billableTasks: [],
+    btwPercent: 21,
+    companyFrom: {
+      name: 'Employer name',
+      companyName: 'Company name',
+      kvk: 'KVK Number',
+      bank: 'NL00 ABCD 01234 5678 90',
+      tnv: 'Name from',
+      cellphone: '+31 612 34 56 78',
+      email: 'john.doe@email.com',
+      code: 'Zip code',
+      city: 'City name',
+      street: 'Street name',
+      country: 'Country',
     },
-    adres: {
-      name: 'Brede Welzijns Instelling Woensdrecht',
-      street: 'Kromstraat 4, 4631KH',
-      city: 'Woensdrecht',
-      country: 'NETHERLANDS',
+    companyTo: {
+      companyName: 'Company name',
+      name: 'Name contactperson',
+      street: 'Adres',
+      code: 'Client Zip Code + City',
+      country: 'Country',
     },
     generalInfo: {
       offerteNumber: 0,
       currentDate: new Date().toDateString(),
       expireDate: new Date(Date.now() + 12096e5).toDateString(),
-      btwNumber: 'NL249711382B01',
-      relationNumber: 18001,
+      btwNumber: 'BTW Number',
+      relationNumber: 1901,
     },
-    client: 'BWI Woensdrecht',
-    offerteTo: 'Juliet Manrho',
-    billableTasks: [],
-    btwPercent: 21,
   })
 }
 </script>
@@ -75,6 +83,11 @@ export default {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+
+    .adres-cards {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 </style>
 
