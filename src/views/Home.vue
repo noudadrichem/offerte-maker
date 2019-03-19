@@ -1,6 +1,6 @@
 <template>
 <div class="home">
-  <div class="container">
+  <div class="container" ref="page">
 
     <UploadLogo/>
 
@@ -10,16 +10,21 @@
       <AdresCard :adresData="companyTo"/>
       <AdresCard :adresData="companyFrom"/>
     </div>
+
     <GeneralInfo :generalInfo="generalInfo"/>
 
     <div class="">
       <Rows v-bind:billableTasks="billableTasks" :addRow="addRow" :btwPercent="btwPercent"/>
     </div>
   </div>
+  <button @click="exportToPDF" class="delete">EXPORT</button>
 </div>
 </template>
 
 <script>
+import html2canvas from 'html2canvas'
+
+
 import PersonalInfo from '../components/PersonalInfo'
 import Rows from '../components/rows'
 import GeneralInfo from '../components/GeneralInfo'
@@ -39,6 +44,28 @@ export default {
       if(newRow.description !== '' && newRow.item !== '') {
         this.$set(this, 'billableTasks', [...this.billableTasks, newRow])
       }
+    },
+
+    exportToPDF(fileType, showDevice, showHotspots, marginValue) {
+      const canvasElement = this.$refs.page
+      const Jspdf = require('jspdf')
+
+      document.querySelectorAll('.delete').forEach(node => {
+        node.remove();
+      })
+
+      html2canvas(canvasElement)
+        .then(canvas => {
+          const imgDataUrl = canvas.toDataURL(`image/jpeg`)
+          const pdf = new Jspdf('p', 'pt')
+          const docWidth = pdf.internal.pageSize.getWidth();
+          const imageHeight = parseInt(getComputedStyle(this.$refs.page).height) / 2
+          pdf.addImage(canvas, `jpeg`, 0, 0, docWidth, imageHeight)
+          pdf.save('download.pdf')
+        })
+
+
+
     }
   },
   data: () => ({

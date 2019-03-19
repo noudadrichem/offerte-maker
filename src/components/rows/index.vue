@@ -8,13 +8,13 @@
 
   <Row v-for="(task, idx) in billableTasks" :task="task" :idx="idx" :key="idx"/>
 
-  <div class="row add">
+  <div class="row add delete">
     <input type="text" v-model="newRow.item" placeholder="Item">
     <input type="text" class="omschrijving" v-model="newRow.description" placeholder="Omschrijving">
     <input type="number" v-model="newRow.units">
     <input type="number" v-model="newRow.costPerUnit">
   </div>
-  <Button @click.native="addRow({...newRow})" className="">Add row</Button>
+  <Button @click.native="addRow({...newRow})" className="delete">Add row</Button>
 
   <Total :rows="billableTasks" :btwPercent="btwPercent"/>
 </div>
@@ -34,10 +34,10 @@ export default {
   },
   data: () => ({
     newRow: {
-      item: 'asdf',
-      description: 'adsf',
+      item: '',
+      description: '',
       units: 1,
-      costPerUnit: 35,
+      costPerUnit: 10,
     },
     headings: {
       index: 'Number',

@@ -1,6 +1,6 @@
 <template>
-<div>
-  <input type='file' ref="logoUpload" @change="loadTextFromFile"/>
+<div class="upload-logo">
+  <input type='file' ref="logoUpload" class="delete" @change="loadTextFromFile"/>
   <img :src="imageData"/>
 </div>
 </template>
@@ -17,11 +17,21 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(file)
       reader.onload = () => {
-        console.log('dit is reader: ', reader)
-        console.log('dit is reader.result: ', reader.result)
         this.$set(this, 'imageData', reader.result)
       }
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.upload-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  img {
+    max-width: 400px;
+  }
+}
+</style>
